@@ -2,7 +2,8 @@
 
 (defpackage #:breakds.bus-watcher
   (:nicknames #:bus-watcher)
-  (:use #:cl)
+  (:use #:cl
+	#:drakma)
   (:import-from #:swiss-knife
                 #:mkstr
                 #:with-gensyms
