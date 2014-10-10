@@ -65,8 +65,28 @@
              collect (code-char code))
           'string))
 
+(defmacro access-json (obj &rest specifiers)
+  "This is the function that chains the accessors of a jsown json
+  object. Integers will be interpreted as indices and strings as
+  property names."
+  `,(reduce (lambda (y x)
+	      (cond 
+		((integerp x) `(nth ,x ,y))
+		((and (consp x)
+		      (or (eq (car x) :ind)
+			  (eq (car x) :index)))
+		 `(nth ,(second x) ,y))
+		((stringp x) `(jsown:val ,y ,x))
+		(t (error "Use (:ind i) when specifying index as variable."))))
+	    specifiers
+	    :initial-value obj))
+
 (defun predictions-by-route (route)
   (do-query :predictionsbyroute 
+    :route (look-up-route route)))
+
+(defun vehicles-by-route (route)
+  (do-query :vehiclesbyroute
     :route (look-up-route route)))
 
   
