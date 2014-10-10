@@ -17,9 +17,9 @@
 (defmacro construct-query (query-type &rest query-parameters)
   `(let ((*print-case* :downcase))
      (format nil "~a~a?~{~a=~a~^&~}" ,+query-prefix+ ,query-type 
-	     '(,@query-parameters 
-               :api_key ,+mbta-key+
-               :format "json"))))
+	     (list ,@query-parameters 
+                   :api_key ,+mbta-key+
+                   :format "json"))))
 
 (defmacro do-query (query-type &rest query-parameters)
   (with-gensyms (response)
@@ -65,9 +65,9 @@
              collect (code-char code))
           'string))
 
-(defun prediction-by-route (route)
-  (do-query :predictionbyroute 
-    :route route))
+(defun predictions-by-route (route)
+  (do-query :predictionsbyroute 
+    :route (look-up-route route)))
 
   
 
