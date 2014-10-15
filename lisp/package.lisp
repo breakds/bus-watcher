@@ -12,6 +12,9 @@
 		#:aif
 		#:awhen
 		#:it
-		#:group))
-
-
+		#:group)
+  (:export #:do-query
+	   #:init
+	   #:look-up-route
+	   #:predictions-by-route
+	   #:vehicles-by-route))

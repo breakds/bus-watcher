@@ -7,5 +7,6 @@
 		 #:jsown
 		 #:stefil)
     :components ((:file "lisp/package")
-		 (:file "lisp/core")))
+		 (:file "lisp/core")
+		 (:file "lisp/recorder")))
 
