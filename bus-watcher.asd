@@ -5,6 +5,7 @@
     :depends-on (#:basicl
 		 #:drakma
 		 #:jsown
+                 #:local-time
 		 #:stefil)
     :components ((:file "lisp/package")
 		 (:file "lisp/core")

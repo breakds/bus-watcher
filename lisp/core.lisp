@@ -89,6 +89,13 @@
   (do-query :vehiclesbyroute
     :route (look-up-route route)))
 
-  
+(defun schedule-by-route (route)
+  (do-query :schedulebyroute
+    :route (look-up-route route)))
+
+;; (defmacro safe-call (form)
+;;   `(handler-case (progn ,@form)
+;;      (format t "~a" 
+
 
 
